@@ -1,14 +1,21 @@
+body{
+  color: #4D4F53;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  line-height: 1.75em;
+}
+
 .full_font{
   margin: 0;
-  font-size: 24px;
+  font-size: 22px;
 }
 
 .mid_font{
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .small_font{
-  font-size: 16px;
+  font-size: 14px;
 }
 
 ul{
@@ -18,7 +25,6 @@ ul{
 li{
   padding-left: 3px;
 }
-
 
 /* 왼쪽 메뉴바 */
 .clicked{
@@ -39,9 +45,9 @@ header{
   color: white;
   float: left;
   height: 100%;
-  width: 20em;
+  width: 18em;
   position: fixed;
-  overflow: scroll;
+  overflow: hidden;
 }
 #menu li{
   line-height: 2.7em;
@@ -62,10 +68,6 @@ header{
 
 
 /* 오른쪽 메인화면 */
-.test{
-  height: 500px;
-}
-
 .a_tag{
   color: #8C1515;
 }
@@ -90,13 +92,13 @@ header{
 }
 
 .full_banner{
-  width: 100%;
+  max-width: 100%;
   height: auto;
 }
 .FULLwrapper{
-  padding-left: 23em;
+  padding-left: 18em;
   height: 100%;
-  width: 80em;
+  max-width: 100%;
 }
 
 .EXITwrapper{
@@ -106,7 +108,7 @@ header{
 .container{
   padding-top: 34px;
   margin:0 auto;
-  width: 60em;
+  width: 45em;
 }
 
 .page{

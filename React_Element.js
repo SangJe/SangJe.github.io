@@ -10,6 +10,14 @@ const WRAP = "FULLwrapper";
 const EXITWRAP = "EXITwrapper"
 
 
+function ScrollMenu(height){
+    if(height<700){
+        menu.style.overflowY="scroll";
+    }else{
+        menu.style.overflowY="";
+    }
+}
+
 function FadeMenu(width){
     if(width < 1085){
         // fade out menu
@@ -47,8 +55,11 @@ function ResizeFont(width){
 
 function ResizeListener(event){
     width = event.currentTarget.innerWidth;
+    height = event.currentTarget.innerHeight;
     ResizeFont(width);
     FadeMenu(width);
+    ScrollMenu(height);
+    ResizeBannerImage(width);
 }
 
 function init(){
