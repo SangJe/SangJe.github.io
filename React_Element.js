@@ -68,7 +68,7 @@ function ResizeListener(event){
     ResizeFont(width);
     FadeMenu(width);
     ScrollMenu(height);
-    AlignTimeLine(); //test
+    AlignTimeLine();
 }
 
 function init(){
