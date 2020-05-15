@@ -5,6 +5,7 @@ const timeline= body.querySelector("#timeline");
 const timeline_h3 = timeline.querySelectorAll("h3");
 const timeline_year = timeline.querySelectorAll(".year");
 
+
 const FULL = "full_font";
 const MID = "mid_font";
 const SMALL = "small_font";
@@ -16,7 +17,6 @@ function AlignTimeLine(){
     for(var i=0; i<timeline_year.length; i++){
         timeline_h3[i].style.height = timeline_year[i].clientHeight;
     }
-    
 }
 
 function ScrollMenu(height){
@@ -69,6 +69,7 @@ function ResizeListener(event){
     FadeMenu(width);
     ScrollMenu(height);
     AlignTimeLine();
+    ChangeColor();
 }
 
 function init(){

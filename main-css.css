@@ -88,27 +88,52 @@ header{
   position: relative;
   margin-top: 5rem;
 }
+.year section ul:first-of-type::after{
+  content: ' ';
+  width: 10px;
+  height: 10px;
+  background-color: #c5c5c5;
+  border-radius: 50%;
+  position: absolute;
+  top: 3px;
+  left: 2.9em;
+  border: 2px solid #ffffff;
+}
 .year section{
   margin-bottom: 3rem;
+  position: relative;
 }
 .year h3{
-  padding-right: 1.2em;
+  font-weight: 450;
+  border-right: medium outset #ecf0f1;
+  padding-right: 0.5rem;
+  margin-right: 0.5rem;
   float: left;
+  
+}
+.intern{
+  color: #8C1515;
 }
 .year h4, h5{
   font-weight: 450;
   line-height: 1em;
-  padding-bottom: 1.2em;
-  margin: 0;
 }
 
 .year ul{
   margin: 0;
+  padding-bottom: 0;
+}
+
+.onmous_a{
+  color: #0f612b !important;
+  font-weight: 700  !important;
+  border-bottom: none !important;
 }
 
 .a_tag{
   color: #8C1515;
   text-decoration: none;
+  border-bottom: solid 1px #7f8c8d;
 }
 
 .resume_button{
@@ -121,8 +146,7 @@ header{
   padding-left: 1.4em;
   padding-right: 1.4em;
   border-radius: 0.5em;
-  text-decoration: none;
-  
+  text-decoration: none;  
 }
 
 .banner_text{
