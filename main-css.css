@@ -34,7 +34,20 @@ li{
   padding-left: 3px;
 }
 
+
 /* 왼쪽 메뉴바 */
+.icons{
+  text-align: center;
+  margin:auto;
+  padding:0px;
+}
+.fa{
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  padding: 2px;
+  color: white;
+}
 .clicked{
   background-color: white;
   color: #10773b;
@@ -46,6 +59,7 @@ header{
   padding-top: 50px;
 }
 #nav{
+  height: 50%;
   text-align: center;
 }
 #menu{
