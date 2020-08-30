@@ -1,17 +1,52 @@
 const nav = body.querySelector("#nav");
 const li = nav.querySelectorAll("li");
 const pages = body.querySelector("#main").children;
-const admin = body.querySelector(".admin_button");
+const admin_btn = body.querySelector(".admin_button");
+const modal = document.querySelector(".modal");
+const input_text_array = modal.querySelectorAll("input");
+const admin__content = modal.querySelector(".admin__content");
+const close_modal_btn = modal.querySelector(".close_modal_btn");
 
 const CLICKED = "clicked";
 
-function Admin_Click(){
-    var popX = window.screenX + (document.body.offsetWidth /2);
-    var popY = window.screenY + (document.body.offsetHeight /3);
-    var options = 'status=no, height=300, width=200, left='+ popX + ', top='+ popY;
-    window.open("login.html","login",options);
-    console.log(popX);
-    console.log(popY);
+const PASSWORD = "829744";
+
+var pw ="";
+
+function ClearModal(){
+    for(var k=0; k<input_text_array.length; k++)
+        input_text_array[k].value="";
+}
+
+function CloseModal(){
+    ClearModal();
+    modal.classList.add("hidden__modal");
+    admin__content.classList.add("hidden_admin__content");
+}
+
+function AutoTab(event){
+    var k = parseInt(event.srcElement.name)-1;
+
+    pw += input_text_array[k].value;
+
+    if(k!=5){
+        input_text_array[k+1].focus();
+    }else{
+        if(pw ==PASSWORD){
+            alert("Welcom administrator")
+            ClearModal();
+            admin__content.classList.remove("hidden_admin__content");
+        }else{
+            ClearModal();
+            modal.classList.add("hidden__modal");
+            alert(pw+"Access is resctricted")
+        }
+    }
+}
+
+function OpenModal(){
+    modal.classList.remove("hidden__modal")
+    input_text_array[0].focus();
 }
 
 function ScrollPage(ClickedNum){
@@ -38,10 +73,16 @@ function MenuClick(event){
 }
 
 function AddListener(){
-    for(var i =0; i<li.length; i++){
+    for(var i=0; i<li.length; i++){
         li[i].addEventListener("click", MenuClick);
     }
-    admin.addEventListener("click", Admin_Click);
+
+    for(var k=0; k<input_text_array.length; k++){
+        input_text_array[k].addEventListener("input", AutoTab);
+    }
+
+    admin_btn.addEventListener("click", OpenModal);
+    close_modal_btn.addEventListener("click", CloseModal);
 }
 
 function init(){
