@@ -30,10 +30,12 @@ function Button_clicked(event){
         var xhr = new XMLHttpRequest();
         xhr.responseType = 'blob';
         xhr.onload = function(event) {
-            var blob = xhr.response;
-          };
+            var blob = xhr.response;  // information of downloaded file.
+            console.log(blob);
+        };
         xhr.open('GET',url);
         xhr.send()
+        window.open(url);
     })
     
 
