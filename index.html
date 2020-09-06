@@ -46,6 +46,8 @@
       </li>
       <div class="admin__content hidden_admin__content">
         <h3>This space is for admin</h3>
+        <progress value="0" max="100" id="uploader">0%</progress>
+        <input type="file" value="upload" id="fileButton"/>
       </div>
       <footer>
         <button class="close_modal_btn">Exit</button>
@@ -60,7 +62,7 @@
           <div class="container">
             <h1 class="banner_text">About Me</h1>
             <ul>
-              <a href="test.pdf" class="resume_button">Resume</a>
+              <button class="resume_button">Resume</button>
             </ul>
             
             <p>
@@ -151,4 +153,29 @@
  <script src="Click_Menu.js"></script>
  <script src="Main_image.js"></script>
  <script src="Cick_Main.js"></script>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-storage.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC-C0tuinRBTQU0XM83tutN0EyrfJW_xHU",
+    authDomain: "my-homepage-3e71a.firebaseapp.com",
+    databaseURL: "https://my-homepage-3e71a.firebaseio.com",
+    projectId: "my-homepage-3e71a",
+    storageBucket: "my-homepage-3e71a.appspot.com",
+    messagingSenderId: "471952463527",
+    appId: "1:471952463527:web:a9517960dabde2b605ad82",
+    measurementId: "G-5GTH0DNSQM"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
 </body>

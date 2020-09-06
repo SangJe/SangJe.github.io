@@ -6,12 +6,31 @@ const modal = document.querySelector(".modal");
 const input_text_array = modal.querySelectorAll("input");
 const admin__content = modal.querySelector(".admin__content");
 const close_modal_btn = modal.querySelector(".close_modal_btn");
+var uploader = document.getElementById('uploader');
+var fileButton = document.getElementById('fileButton');
 
 const CLICKED = "clicked";
 
 const PASSWORD = "829744";
 
 var pw ="";
+
+function UploadResume(event){
+    // Get file
+    var file = event.target.files[0];
+
+    // Create a storage ref
+    var storageRef = firebase.storage().ref('CV/'+file.name);
+
+    // Upload file
+    storageRef.put(file).then(function(snapshot){
+        var percentage = (snapshot.bytesTransferred/snapshot.totalBytes) * 100;
+        uploader.value = percentage;
+        if(percentage = 100)
+            alert("uploading is done!!");
+    });
+    
+}
 
 function ClearModal(){
     for(var k=0; k<input_text_array.length; k++)
@@ -36,11 +55,13 @@ function AutoTab(event){
             alert("Welcom administrator")
             ClearModal();
             admin__content.classList.remove("hidden_admin__content");
+            fileButton.addEventListener('change', UploadResume);
         }else{
             ClearModal();
             modal.classList.add("hidden__modal");
             alert(pw+"Access is resctricted")
         }
+        pw = "";
     }
 }
 

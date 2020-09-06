@@ -1,4 +1,4 @@
-const button = main.querySelector(".resume_button");
+const resume_button = main.querySelector(".resume_button");
 const arr_a = document.querySelectorAll("a");
 
 const MOUSE_ON = "mouse_on_button";
@@ -13,22 +13,36 @@ function ChangeColor(event){
 }
 
 function MouseoutButton(event){
-    button.style.backgroundColor = "";
+    resume_button.style.backgroundColor = "";
 }
 
 function MouseonButton(event){
-    button.style.backgroundColor = "#2c3e50";
+    resume_button.style.backgroundColor = "#2c3e50";
     
 }
 
 function Button_clicked(event){
+
+    var storageRef = firebase.storage().ref();
+
+    storageRef.child('CV/CV.pdf').getDownloadURL().then(function(url) {
+
+        var xhr = new XMLHttpRequest();
+        xhr.responseType = 'blob';
+        xhr.onload = function(event) {
+            var blob = xhr.response;
+          };
+        xhr.open('GET',url);
+        xhr.send()
+    })
     
+
 }
 
 function init(){
-    button.addEventListener("click", Button_clicked);
-    button.addEventListener("mouseenter", MouseonButton);
-    button.addEventListener("mouseout", MouseoutButton);
+    resume_button.addEventListener("click", Button_clicked);
+    resume_button.addEventListener("mouseenter", MouseonButton);
+    resume_button.addEventListener("mouseout", MouseoutButton);
 
     for(var i=1; i<arr_a.length; i++){
         arr_a[i].id = i;
