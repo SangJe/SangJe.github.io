@@ -9,7 +9,6 @@ function ChangeColor(event){
     const index = parseInt(event.srcElement.id);
     arr_a[index].classList.toggle(MOUSE_ON_TEXT);
     console.log(index);
-
 }
 
 function MouseoutButton(event){
@@ -22,6 +21,8 @@ function MouseonButton(event){
 }
 
 function Button_clicked(event){
+    
+    console.log("button clicked");
 
     var storageRef = firebase.storage().ref();
 
@@ -35,6 +36,7 @@ function Button_clicked(event){
         };
         xhr.open('GET',url);
         xhr.send()
+        console.log(url);
         window.open(url);
     })
     
