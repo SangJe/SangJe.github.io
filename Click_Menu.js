@@ -3,11 +3,12 @@ const li = nav.querySelectorAll("li");
 const pages = body.querySelector("#main").children;
 const admin_btn = body.querySelector(".admin_button");
 const modal = document.querySelector(".modal");
+
 const input_text_array = modal.querySelectorAll("input");
 const admin__content = modal.querySelector(".admin__content");
 const close_modal_btn = modal.querySelector(".close_modal_btn");
-var uploader = document.getElementById('uploader');
-var fileButton = document.getElementById('fileButton');
+const cv_bucket = modal.querySelector(".CV__content");
+const cv_bucket_text = modal.querySelector(".drop_text");
 
 const CLICKED = "clicked";
 
@@ -15,21 +16,40 @@ const PASSWORD = "829744";
 
 var pw ="";
 
-function UploadResume(event){
-    // Get file
-    var file = event.target.files[0];
+function DragLeave(event){
+    event.stopPropagation();
+    event.preventDefault();
+    cv_bucket.classList.remove("CV_drag");
+    cv_bucket.classList.add("CV_no_drag");
+}
 
+function DragOver(event){
+    event.stopPropagation();
+    event.preventDefault();
+    cv_bucket.classList.remove("CV_no_drag")
+    cv_bucket.classList.add("CV_drag");
+}
+
+
+function UploadResume(event){
+    event.stopPropagation();
+    event.preventDefault();  // preventing browser from loading file
+    
+    cv_bucket_text.innerHTML = "uploading....."
+
+    var file = event.dataTransfer.files[0];
+    
     // Create a storage ref
     var storageRef = firebase.storage().ref('CV/'+file.name);
 
     // Upload file
     storageRef.put(file).then(function(snapshot){
         var percentage = (snapshot.bytesTransferred/snapshot.totalBytes) * 100;
-        uploader.value = percentage;
-        if(percentage = 100)
-            alert("uploading is done!!");
+        if(percentage = 100){
+            cv_bucket_text.innerHTML = "Done!!"
+        }
     });
-    
+
 }
 
 function ClearModal(){
@@ -55,7 +75,9 @@ function AutoTab(event){
             alert("Welcom administrator")
             ClearModal();
             admin__content.classList.remove("hidden_admin__content");
-            fileButton.addEventListener('change', UploadResume);
+            cv_bucket.addEventListener("drop", UploadResume);
+            cv_bucket.addEventListener('dragover', DragOver);
+            cv_bucket.addEventListener('dragleave', DragLeave);
         }else{
             ClearModal();
             modal.classList.add("hidden__modal");
